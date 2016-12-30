@@ -1,0 +1,21 @@
+apply plugin: 'java'
+
+repositories {
+	mavenCentral()
+}
+
+sourceSets {
+	test2
+}
+
+task test2(type: Test) {
+	testClassesDir = sourceSets.test2.output.classesDir
+	classpath = sourceSets.test2.runtimeClasspath
+}
+
+dependencies {
+	testCompile 'junit:junit:4.12'
+	test2Compile 'junit:junit:4.12'
+}
+
+check.dependsOn test2
